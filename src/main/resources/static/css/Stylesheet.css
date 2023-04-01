@@ -1,0 +1,15 @@
+#h1Head {
+    text-align: center;
+    margin-top: 200px;
+    color: brown;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{
+    font-size: xx-large;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Sans KR', sans-serif;
+}
