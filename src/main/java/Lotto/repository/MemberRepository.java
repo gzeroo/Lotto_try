@@ -5,20 +5,13 @@ import Lotto.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
-    /*
-    Member save(Member member); // 회원 정보 저장
-
-    Member findById(long id); // 회원 고유 번호 찾기
-
-    Member findByName(String memberId); // 회원 이름(계정) 찾기, 마이페이지 로그인 이름 확인용
-
-
-    void update(long id, Member updateMember);
-
-    void delete(long id);
-     */
+    // DB에 날릴 쿼리문 : select * from mem_table where memberId = ?
+    // 리턴 타입: MemberEntity
+    // 매개 변수: memberId(String)
+    Optional<MemberEntity> findByMemberId(String memberId); // findByMemberId : jpa 룰 이용해서 생성
 
 }

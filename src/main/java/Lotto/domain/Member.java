@@ -1,5 +1,6 @@
 package Lotto.domain;
 
+import Lotto.entity.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Data
 public class Member {
+
 
     private long id;
 
@@ -21,10 +23,14 @@ public class Member {
 
     public Member(){};
 
+    public static Member memberDomain(MemberEntity memberEntity){
+        Member member = new Member();
+        member.setId(memberEntity.getId());
+        member.setMemberId(member.getMemberId());
+        member.setMemberPw(member.getMemberPw());
+        return member;
+    }
 
-//    public Member(String memberId, String memberPw){
-//        this.memberId = memberId;
-//        this.memberPw = memberPw;
-//    }
+
 
 }

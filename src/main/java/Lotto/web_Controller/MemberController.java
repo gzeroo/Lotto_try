@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 
 @Slf4j// 생성자 주입
 @Controller // 뷰네임 불러오기 // 컨트롤 기능 수행 선언
@@ -23,6 +25,7 @@ public class MemberController {
         return "/basic/LottoSignUp";
     }
 
+    // 회원 가입
     @PostMapping("/basic/LottoSignUp")
     public String saveMember(@ModelAttribute Member member){
         memberService.save(member);
@@ -30,30 +33,34 @@ public class MemberController {
     }
 
 
-    /*
-    @GetMapping()
-    public String member(Model model){
+    @GetMapping("/LottoLogin")
+    public String loginGet(){
         return "/basic/LottoLogin";
     }
 
-    @PostMapping() // 계정&비밀번호 일치할 경우
-    public String loginMember(@PathVariable long id,
-                              Model model){
-        Member member = memberRepository.findById(id);
-        model.addAttribute("member", member);
-        return "/basic/LottoMyPage";
+
+    // 로그인 정보 일치 여부 확인
+    @PostMapping("/LottoLogin")
+    public String login(@ModelAttribute Member member, HttpSession session){
+        Member loginResult = memberService.login(member);
+        if(loginResult != null){
+            session.setAttribute("loginId",loginResult.getMemberId());
+            session.setAttribute("loginPw",loginResult.getMemberPw());
+            return "/basic/LottoMyPage";
+        }else{
+            return "/basic/LottoLogin";
+        }
     }
 
-    @GetMapping("/basic/LottoForgotPassword")
-    public String Singup(Model model){
-        return "/basic/LottoForgotPassword";
-    }
+//    @PostMapping("/LottoLogin")
+//    public String login(@ModelAttribute Member member){
+//        boolean loginResult = memberService.login(member);
+//        if(loginResult){
+//            return "/basic/LottoMyPage";
+//        }else{
+//            return "/basic/LottoLogin";
+//        }
+//    }
 
-    @PostMapping("/basic/LottoForgotPassword")
-    public String singUpMember(){
-        return null;
-    }
-
-     */
 
 }
