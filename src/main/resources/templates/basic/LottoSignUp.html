@@ -17,10 +17,10 @@
 
     <!--    회원 가입 form-->
     <div class="form">
-      <form action="" th:action th:object="" method="post">
-        <input type="text" maxlength="15" name="memberId" id="memberId" onkeydown="javascript: if (event.keyCode == 13) {enter_check3(event.keyCode);}" autocomplete="off" title="아이디" placeholder="가입 아이디">
-        <input type="password" maxlength="100" name="password" onkeydown="enter_check3(event.keyCode);" title="비밀번호" placeholder="가입 비밀번호">
-        <input type="submit" value="가입" class="btn_common lrg blu">
+      <form action="/basic/LottoSignUp" method="post">
+        <input type="text" maxlength="15" name="memberId" id="memberId" autocomplete="off" title="아이디" placeholder="가입 아이디">
+        <input type="password" maxlength="100" name="password" title="비밀번호" placeholder="가입 비밀번호">
+<!--        <input type="submit" value="가입" class="btn_common lrg blu">-->
 <!--        <a class="btn_common lrg blu" href="마이 페이지로 이동하는 경로 넣기">가입</a>-->
         <button class="btn_common lrg blu"
                 onclick="location.href='/basic/LottoLogin'" type="submit">가입</button>

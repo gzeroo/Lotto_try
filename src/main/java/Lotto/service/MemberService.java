@@ -41,6 +41,18 @@ public class MemberService {
         }
     }
 
+    public Member findById(long id){
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
+        if (optionalMemberEntity.isPresent()){
+           // return Member.memberDomain(optionalMemberEntity.get()); // 아래 48 ~ 50 줄과 같은 말
+            MemberEntity memberEntity = optionalMemberEntity.get();
+            Member member = Member.memberDomain(memberEntity);
+            return member;
+        }else {
+            return null;
+        }
+    }
+
 //    public boolean login(Member member) {
 //        /*
 //         * login.html에서 회원 id, 비번을 받아오고
