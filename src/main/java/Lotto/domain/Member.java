@@ -7,16 +7,16 @@ import java.util.HashMap;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 public class Member {
 
     private long id;
 
     private String memberId;
+    // private boolean rememberId;
 
     private String memberPw;
 
-    private HashMap<String, Member> memberLikeNumber; // 키: 회원id(memberId), 밸류: 회원 지정 번호 리스트
+    //private HashMap<String, Member> memberLikeNumber; // 키: 회원id(memberId), 밸류: 회원 지정 번호 리스트
 
 
     public Member(){};

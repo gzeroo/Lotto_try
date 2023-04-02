@@ -2,36 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <link th:href="@{/css/SignUpStyle.css}"
-        href="../css/SignUpStyle.css" rel="stylesheet">
+  <link th:href="@{/templates/css/Login_Signup_ForgotPW_Style.css}"
+        href="../css/Login_Signup_ForgotPW_Style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
-  <title>lottoSignUp</title>
+  <title>lottoSingUp</title>
 </head>
-
 <body>
+<div class="box_login">
 
-<div class="section">
+  <fieldset>
+    <legend><strong>Sign Up</strong></legend>
 
-  <h1>회원 가입</h1>
-
-  <!--      회원 가입 폼 -->
-  <div class="signupForm">
-    <form action th:action method="post">
-      <h4 class="signup">Sign Up</h4>
-      <div class="signupID">
-        <input type="text" name="signupID" class="form-style" placeholder="Your ID" id="signupID" autocomplete="off">
-      </div>
-      <br>
-      <div class="signupPassword">
-        <input type="password" name="signupPassword" class="form-style" placeholder="Your Password" id="signupPassword" autocomplete="off">
-      </div>
-      <br>
-      <a href="#" class="btn mt-4">submit</a>
-    </form>
-  </div>
-
+    <!--    회원 가입 form-->
+    <div class="form">
+      <form action="" th:action th:object="" method="post">
+        <input type="text" maxlength="15" name="memberId" id="memberId" onkeydown="javascript: if (event.keyCode == 13) {enter_check3(event.keyCode);}" autocomplete="off" title="아이디" placeholder="가입 아이디">
+        <input type="password" maxlength="100" name="password" onkeydown="enter_check3(event.keyCode);" title="비밀번호" placeholder="가입 비밀번호">
+        <input type="submit" value="가입" class="btn_common lrg blu">
+<!--        <a class="btn_common lrg blu" href="마이 페이지로 이동하는 경로 넣기">가입</a>-->
+        <button class="btn_common lrg blu"
+                onclick="location.href='/basic/LottoLogin'" type="submit">가입</button>
+      </form>
+    </div>
+  </fieldset>
 </div>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/templates/css/Login_Signup_ForgotPW_Style.css}"
+        href="../css/Login_Signup_ForgotPW_Style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+  <title>lottoLogin</title>
+</head>
+<body>
+<div class="box_login">
+
+  <fieldset>
+    <legend><strong>LOGIN</strong></legend>
+
+<!--    로그인 form-->
+    <div class="form">
+      <form action="" th:action th:object="" method="post">
+      <input type="text" maxlength="15" name="memberId" id="memberId" onkeydown="javascript: if (event.keyCode == 13) {enter_check3(event.keyCode);}" autocomplete="off" title="아이디" placeholder="아이디">
+      <input type="password" maxlength="100" name="password" onkeydown="enter_check3(event.keyCode);" title="비밀번호" placeholder="비밀번호">
+      <a class="btn_common lrg blu" href="마이 페이지로 이동하는 경로 넣기">로그인</a>
+      </form>
+    </div>
+    <div class="links">
+      <button class="btn_common lrg" onclick="location.href='/basic/LottSignUp'" type="button">회원 가입</button>
+      <button class="btn_common lrg" onclick="location.href='/basic/LottForgotPassword'" type="button">비밀번호 재설정</button>
+    </div>
+  </fieldset>
+</div>
+</body>
+</html>
