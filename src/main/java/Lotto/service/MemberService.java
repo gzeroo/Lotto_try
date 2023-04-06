@@ -59,6 +59,19 @@ public class MemberService {
     }
 
 
+    public MemberDTO updateForm(String loginId){
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberId(loginId);
+        if(optionalMemberEntity.isPresent()){
+            return MemberDTO.memberDomain(optionalMemberEntity.get());
+        }else {
+            return null;
+        }
+    }
+
+    public void update(MemberDTO memberDTO) {
+        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+    }
+
 
 //    public boolean login(Member member) {
 //        /*

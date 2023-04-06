@@ -31,13 +31,8 @@ public class MemberDTO {
 
     public static MemberDTO memberDomain(MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setId(memberEntity.getId());
         memberDTO.setMemberId(memberDTO.getMemberId());
         memberDTO.setMemberPw(memberDTO.getMemberPw());
         return memberDTO;
     }
-
-
-
-
 }

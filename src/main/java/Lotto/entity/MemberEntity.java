@@ -16,7 +16,7 @@ public class MemberEntity {
     @Column(name = "member_num")
     private Long id;
 
-    @Column(length = 50, unique = true)
+    @Column(length = 10, unique = true)
     private String memberId;
 
     @Column(length = 20)
@@ -24,7 +24,14 @@ public class MemberEntity {
 
     public static MemberEntity toSaveEntity(MemberDTO memberDTO){ // 도메인에 있는 memberDTO 정보를 Entity에 담아서 옮겨 담는다.
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setId(memberEntity.getId());
+        memberEntity.setMemberId(memberDTO.getMemberId());
+        memberEntity.setMemberPw(memberDTO.getMemberPw());
+        return memberEntity;
+    }
+
+    public static MemberEntity toUpdateMemberEntity(MemberDTO memberDTO){ // 도메인에 있는 memberDTO 정보를 Entity에 담아서 옮겨 담는다.
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setId(memberDTO.getId()); // 계정이 생성된 상태라 생성된 계정 고유 넘버 가져오기
         memberEntity.setMemberId(memberDTO.getMemberId());
         memberEntity.setMemberPw(memberDTO.getMemberPw());
         return memberEntity;

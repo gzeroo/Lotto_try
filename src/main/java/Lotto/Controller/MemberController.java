@@ -59,13 +59,19 @@ public class MemberController {
         }
     }
 
-//    @GetMapping("/LottoForgotPassword")
-//    public String updateForm(HttpSession session, Model model){ // 세션에 저장한 값(내 정보)을 가져와서 로그인 id를 db로 부터 가져와서 model에 담아서 비번재설정.html로 이동
-//        String loginId = (String) session.getAttribute("memberId");
-//        MemberDTO memberDTO = memberService.updateForm(memberId);
-//        model.addAttribute("updateMember", memberDTO);
-//        return "/basic/LottoForgotPassword";
-//    }
+    @GetMapping("/LottoForgotPassword")
+    public String updateForm(HttpSession session, Model model){ // 세션에 저장한 값(내 정보)을 가져와서 로그인 id를 db로 부터 가져와서 model에 담아서 비번재설정.html로 이동
+        String loginId = (String) session.getAttribute("memberId");
+        MemberDTO memberDTO = memberService.updateForm(loginId);
+        model.addAttribute("updateMember", memberDTO);
+        return "/basic/LottoForgotPassword";
+    }
+
+    @PostMapping("/basic/LottoForgotPassword")
+    public String update(@ModelAttribute MemberDTO memberDTO){ // 비번 값 받아오기
+        memberService.update(memberDTO);
+        return "redirect:/basic/LottoLogin";
+    }
 
     @GetMapping("/LottoMyPage")
     public String firstMyPage(){
