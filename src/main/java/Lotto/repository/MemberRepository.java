@@ -1,10 +1,8 @@
 package Lotto.repository;
 
-import Lotto.domain.Member;
 import Lotto.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {

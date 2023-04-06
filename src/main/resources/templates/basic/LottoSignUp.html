@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <link th:href="@{/templates/css/Login_Signup_ForgotPW_Style.css}"
-        href="../css/Login_Signup_ForgotPW_Style.css" rel="stylesheet">
+  <link th:href="@{/css/Login_Signup_ForgotPW_Style.css}"
+        href="../../static/css/Login_Signup_ForgotPW_Style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
     <div class="form">
       <form action="/basic/LottoSignUp" method="post">
         <input type="text" maxlength="15" name="memberId" id="memberId" autocomplete="off" title="아이디" placeholder="가입 아이디">
-        <input type="password" maxlength="100" name="password" title="비밀번호" placeholder="가입 비밀번호">
+        <input type="password" maxlength="100" name="memberPw" title="비밀번호" placeholder="가입 비밀번호">
 <!--        <input type="submit" value="가입" class="btn_common lrg blu">-->
 <!--        <a class="btn_common lrg blu" href="마이 페이지로 이동하는 경로 넣기">가입</a>-->
         <button class="btn_common lrg blu"

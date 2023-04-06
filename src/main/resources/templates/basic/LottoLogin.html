@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <link th:href="@{/templates/css/Login_Signup_ForgotPW_Style.css}"
-        href="../css/Login_Signup_ForgotPW_Style.css" rel="stylesheet">
+  <link th:href="@{/css/Login_Signup_ForgotPW_Style.css}"
+        href="../../static/css/Login_Signup_ForgotPW_Style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
@@ -16,16 +16,16 @@
 
 <!--    로그인 form-->
     <div class="form">
-      <form action="" method="post">
-      <input type="text" maxlength="15" autocomplete="off" title="아이디" placeholder="아이디">
-      <input type="password" maxlength="100" name="password" title="비밀번호" placeholder="비밀번호">
+      <form action="" th:action method="post">
+      <input type="text" maxlength="15" name="memberId" eautocomplete="off" title="아이디" placeholder="아이디">
+      <input type="password" maxlength="100" name="memberPw" title="비밀번호" placeholder="비밀번호">
         <button class="btn_common lrg blu"
                 onclick="location.href='/basic/LottoMyPage'" type="submit">로그인</button>
       </form>
     </div>
     <div class="links">
-      <button class="btn_common lrg" onclick="location.href='/basic/LottSignUp'" type="button">회원 가입</button>
-      <button class="btn_common lrg" onclick="location.href='/basic/LottForgotPassword'" type="button">비밀번호 재설정</button>
+      <button class="btn_common lrg" onclick="location.href='/basic/LottoSignUp'" type="button">회원 가입</button>
+      <button class="btn_common lrg" onclick="location.href='/basic/LottoForgotPassword'" type="button">비밀번호 재설정</button>
     </div>
   </fieldset>
 </div>

@@ -5,15 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class MemberDTO {
 
-
+// DTO
     private long id;
 
     private String memberId;
@@ -26,18 +23,18 @@ public class Member {
 
    // public Member(){}; // @NoArgsConstructor
 
-    public Member(String memberId, String memberPw){
+    public MemberDTO(String memberId, String memberPw){
         this.memberId = memberId;
         this.memberPw = memberPw;
     }
 
 
-    public static Member memberDomain(MemberEntity memberEntity){
-        Member member = new Member();
-        member.setId(memberEntity.getId());
-        member.setMemberId(member.getMemberId());
-        member.setMemberPw(member.getMemberPw());
-        return member;
+    public static MemberDTO memberDomain(MemberEntity memberEntity){
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setId(memberEntity.getId());
+        memberDTO.setMemberId(memberDTO.getMemberId());
+        memberDTO.setMemberPw(memberDTO.getMemberPw());
+        return memberDTO;
     }
 
 

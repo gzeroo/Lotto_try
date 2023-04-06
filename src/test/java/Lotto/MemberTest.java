@@ -1,6 +1,6 @@
 package Lotto;
 
-import Lotto.domain.Member;
+import Lotto.domain.MemberDTO;
 import Lotto.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +18,8 @@ public class MemberTest {
     @Autowired
     private MemberService memberService;
 
-    public Member newMember(){
-        Member member = new Member("테스트용Id", "테스트용PW");
+    public MemberDTO newMember(){
+        MemberDTO member = new MemberDTO("테스트용Id", "테스트용PW");
         return member;
     }
 
@@ -30,7 +30,7 @@ public class MemberTest {
     @DisplayName("회원가입 테스트")
     public void memberSaveTest(){
         Long saveId = memberService.save(newMember());
-        Member member = memberService.findById(saveId);
+        MemberDTO member = memberService.findById(saveId);
         assertThat(newMember().getMemberId()).isEqualTo(member.getMemberId()); // 메소드(newMember) 과 member에 저장된 id가 같은지 확인
     }
 
@@ -42,14 +42,14 @@ public class MemberTest {
     public void loginTest(){
         String memberId = "로그인 아이디";
         String memberPw = "로그인 비번";
-        Member member = new Member(memberId, memberPw);
+        MemberDTO member = new MemberDTO(memberId, memberPw);
         Long saveId = memberService.save(member);
 
         // 로그인 객체 생성 후 로그인
-        Member loginMember = new Member();
+        MemberDTO loginMember = new MemberDTO();
         loginMember.setMemberId(memberId);
         loginMember.setMemberPw(memberPw);
-        Member loginResult = memberService.login(member);
+        MemberDTO loginResult = memberService.login(member);
 
         // 로그인 결과가 not null 이면 테스트 통과
         assertThat(loginResult).isNotNull();

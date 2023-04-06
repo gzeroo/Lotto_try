@@ -1,6 +1,6 @@
 package Lotto.service;
 
-import Lotto.domain.Member;
+import Lotto.domain.MemberDTO;
 import Lotto.entity.MemberEntity;
 import Lotto.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,26 +14,31 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public Long save(Member member) {
-       Long saveId = memberRepository.save(MemberEntity.toSaveEntity(member)).getId(); //save: entity 파라미터만 전달가능
-//        MemberEntity memberEntity = MemberEntity.toSaveEntity(member);
+    public Long save(MemberDTO memberDTO) {
+       Long saveId = memberRepository.save(MemberEntity.toSaveEntity(memberDTO)).getId(); //save: entity 파라미터만 전달가능
+//        MemberEntity memberEntity = MemberEntity.toSaveEntity(memberDTO);
 //        Long id = memberRepository.save(memberEntity).getId;
         return saveId;
     }
 
-    public Member login(Member member) {
+    public MemberDTO login(MemberDTO memberDTO) {
         /*
         * login.html에서 회원 id, 비번을 받아오고
         * DB로 부터 해당 회원 id의 정보를 가져와서
         * 입력받은 비번과 DB에서 조회한 비번의 일치여부를 판단하여
         * 일치하면 로그인 성공, 일치하지 않으면 로그인 실패로 처리
          */
-        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberId(member.getMemberId());
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberId(memberDTO.getMemberId());
         if (optionalMemberEntity.isPresent()){
+            // 조회 결과가 있다(해당 id를 가진 회원 정보가 있다)
             MemberEntity loginEntity = optionalMemberEntity.get();
-            if (loginEntity.getMemberPw().equals(member.getMemberPw())){
-                return Member.memberDomain(loginEntity);
+            if (loginEntity.getMemberPw().equals(memberDTO.getMemberPw())){
+                // 비밀번호일치
+                // entity -> DTO 변환 후 리턴
+                return MemberDTO.memberDomain(loginEntity);
             }else {
+                // 비밀번호 불일치(로그인 실패)
+                // 조회 결과가 없다(해당 이메일을 가진 회원이 없다)
                 return null;
             }
         }else {
@@ -41,17 +46,19 @@ public class MemberService {
         }
     }
 
-    public Member findById(long id){
+    public MemberDTO findById(long id){
         Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
         if (optionalMemberEntity.isPresent()){
            // return Member.memberDomain(optionalMemberEntity.get()); // 아래 48 ~ 50 줄과 같은 말
             MemberEntity memberEntity = optionalMemberEntity.get();
-            Member member = Member.memberDomain(memberEntity);
-            return member;
+            MemberDTO memberDTO = MemberDTO.memberDomain(memberEntity);
+            return memberDTO;
         }else {
             return null;
         }
     }
+
+
 
 //    public boolean login(Member member) {
 //        /*
